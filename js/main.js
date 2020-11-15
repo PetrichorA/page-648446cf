@@ -1,0 +1,2 @@
+const e=()=>{const e=document.querySelectorAll("eq");for(const t of e)katex.render(t.textContent,t,{displayMode:!1,throwOnError:!1});const t=document.querySelectorAll("eqn");for(const e of t)katex.render(e.textContent,e,{displayMode:!0,throwOnError:!1});const o=document.querySelectorAll("pre code");for(const e of o)hljs.highlightBlock(e)};"complete"===document.readyState?e():document.addEventListener("DOMContentLoaded",e);
+//# sourceMappingURL=main.js.map
