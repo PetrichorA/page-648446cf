@@ -20,6 +20,6 @@
     if (document.readyState === 'complete') {
         render();
     } else {
-        document.addEventListener('DOMContentLoaded', render);
+        window.addEventListener('load', render);
     }
 })(document);

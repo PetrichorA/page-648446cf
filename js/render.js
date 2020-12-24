@@ -1,0 +1,1 @@
+(e=>{const r=()=>{e.querySelectorAll("eq").forEach(e=>{katex.render(e.textContent,e,{displayMode:!1,throwOnError:!1})}),e.querySelectorAll("eqn").forEach(e=>{katex.render(e.textContent,e,{displayMode:!0,throwOnError:!1})}),e.querySelectorAll("pre code").forEach(e=>{hljs.highlightBlock(e)})};"complete"===e.readyState?r():window.addEventListener("load",r)})(document);
