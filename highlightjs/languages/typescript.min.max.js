@@ -28,10 +28,10 @@ returnEnd:!1,contains:[r.BACKSLASH_ESCAPE,u],subLanguage:"xml"}},m={
 begin:"css`",end:"",starts:{end:"`",returnEnd:!1,
 contains:[r.BACKSLASH_ESCAPE,u],subLanguage:"css"}},_={className:"string",
 begin:"`",end:"`",contains:[r.BACKSLASH_ESCAPE,u]},y={className:"comment",
-variants:[r.COMMENT("/\\*\\*","\\*/",{relevance:0,contains:[{className:"doctag",
-begin:"@[A-Za-z]+",contains:[{className:"type",begin:"\\{",end:"\\}",relevance:0
-},{className:"variable",begin:c+"(?=\\s*(-)|$)",endsParent:!0,relevance:0},{
-begin:/(?=[^\n])\s/,relevance:0}]}]
+variants:[r.COMMENT(/\/\*\*(?!\/)/,"\\*/",{relevance:0,contains:[{
+className:"doctag",begin:"@[A-Za-z]+",contains:[{className:"type",begin:"\\{",
+end:"\\}",relevance:0},{className:"variable",begin:c+"(?=\\s*(-)|$)",
+endsParent:!0,relevance:0},{begin:/(?=[^\n])\s/,relevance:0}]}]
 }),r.C_BLOCK_COMMENT_MODE,r.C_LINE_COMMENT_MODE]
 },p=[r.APOS_STRING_MODE,r.QUOTE_STRING_MODE,E,m,_,g,r.REGEXP_MODE]
 ;u.contains=p.concat({begin:/\{/,end:/\}/,keywords:l,contains:["self"].concat(p)
@@ -47,7 +47,7 @@ begin:i(/[{,\n]\s*/,t(i(/(((\/\/.*$)|(\/\*(\*[^/]|[^*])*\*\/))\s*)*/,c+"\\s*:"))
 relevance:0,contains:[{className:"attr",begin:c+t("\\s*:"),relevance:0}]},{
 begin:"("+r.RE_STARTERS_RE+"|\\b(case|return|throw)\\b)\\s*",
 keywords:"return throw case",contains:[y,r.REGEXP_MODE,{className:"function",
-begin:"(\\([^()]*(\\([^()]*(\\([^()]*\\))*[^()]*\\))*[^()]*\\)|"+r.UNDERSCORE_IDENT_RE+")\\s*=>",
+begin:"(\\([^()]*(\\([^()]*(\\([^()]*\\)[^()]*)*\\)[^()]*)*\\)|"+r.UNDERSCORE_IDENT_RE+")\\s*=>",
 returnBegin:!0,end:"\\s*=>",contains:[{className:"params",variants:[{
 begin:r.UNDERSCORE_IDENT_RE,relevance:0},{className:null,begin:/\(\s*\)/,skip:!0
 },{begin:/\(/,end:/\)/,excludeBegin:!0,excludeEnd:!0,keywords:l,contains:f}]}]
@@ -58,7 +58,7 @@ contains:["self"]}]}],relevance:0},{className:"function",
 beginKeywords:"function",end:/[{;]/,excludeEnd:!0,keywords:l,
 contains:["self",r.inherit(r.TITLE_MODE,{begin:c}),A],illegal:/%/},{
 beginKeywords:"while if switch catch for"},{className:"function",
-begin:r.UNDERSCORE_IDENT_RE+"\\([^()]*(\\([^()]*(\\([^()]*\\))*[^()]*\\))*[^()]*\\)\\s*\\{",
+begin:r.UNDERSCORE_IDENT_RE+"\\([^()]*(\\([^()]*(\\([^()]*\\)[^()]*)*\\)[^()]*)*\\)\\s*\\{",
 returnBegin:!0,contains:[A,r.inherit(r.TITLE_MODE,{begin:c})]},{variants:[{
 begin:"\\."+c},{begin:"\\$"+c}],relevance:0},{className:"class",
 beginKeywords:"class",end:/[{;=]/,excludeEnd:!0,illegal:/[:"[\]]/,contains:[{
