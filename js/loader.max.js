@@ -27,11 +27,7 @@
         // insert highlight.js
         elem = document.createElement('script');
         elem.src = document.getElementById('highlightjs-url').href;
-        elem.addEventListener('load', () => {
-            document.querySelectorAll('pre code').forEach((elem) => {
-                hljs.highlightBlock(elem);
-            });
-        });
+        elem.addEventListener('load', () => hljs.highlightAll());
         document.body.appendChild(elem);
     });
 })(document);
