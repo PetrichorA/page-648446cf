@@ -5,7 +5,7 @@ temporary_name_0 = '88878fba-864a-bdaf-64e8-11e208ae7d8a'
 temporary_name_1 = 'd07270f1-439e-7cec-ca32-07cd864c6fbd'
 
 terser = r'wsl terser "{input}" --compress --mangle --comments false --ecma 2015 -o "{output}"'
-cleancss = r'wsl cleancss -O2 "{input}" -o "{output}"'
+cleancss = r'wsl cleancss -O1 specialComments:0 -O2 "{input}" -o "{output}"'
 
 # ---
 
