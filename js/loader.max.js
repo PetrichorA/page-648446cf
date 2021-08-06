@@ -1,11 +1,11 @@
 /*
     <link rel="preload" as="script" id="katex-url" href="katex-path">
-    <link rel="preload" as="script" id="highlightjs-url" href="highlightjs-path">
+    <link rel="preload" as="script" id="hljs-url" href="hljs-path">
 */
 
 ((document) => {
     document.addEventListener('DOMContentLoaded', () => {
-        // insert KaTeX
+        // insert KaTeX (https://github.com/KaTeX/KaTeX)
         let elem = document.createElement('script');
         elem.src = document.getElementById('katex-url').href;
         elem.addEventListener('load', () => {
@@ -24,9 +24,9 @@
         });
         document.body.appendChild(elem);
 
-        // insert highlight.js
+        // insert highlight.js (https://github.com/highlightjs/highlight.js)
         elem = document.createElement('script');
-        elem.src = document.getElementById('highlightjs-url').href;
+        elem.src = document.getElementById('hljs-url').href;
         elem.addEventListener('load', () => hljs.highlightAll());
         document.body.appendChild(elem);
     });
