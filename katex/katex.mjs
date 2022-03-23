@@ -4465,7 +4465,7 @@ defineSymbol(math, main, bin, "\u2293", "\\sqcap", true);
 defineSymbol(math, main, bin, "\u2217", "\\ast");
 defineSymbol(math, main, bin, "\u2294", "\\sqcup", true);
 defineSymbol(math, main, bin, "\u25ef", "\\bigcirc", true);
-defineSymbol(math, main, bin, "\u2219", "\\bullet");
+defineSymbol(math, main, bin, "\u2219", "\\bullet", true);
 defineSymbol(math, main, bin, "\u2021", "\\ddagger");
 defineSymbol(math, main, bin, "\u2240", "\\wr", true);
 defineSymbol(math, main, bin, "\u2a3f", "\\amalg");
@@ -4824,13 +4824,13 @@ defineSymbol(math, main, bin, "\u2217", "*", true);
 defineSymbol(math, main, bin, "+", "+");
 defineSymbol(math, main, bin, "\u2212", "-", true);
 defineSymbol(math, main, bin, "\u22c5", "\\cdot", true);
-defineSymbol(math, main, bin, "\u2218", "\\circ");
+defineSymbol(math, main, bin, "\u2218", "\\circ", true);
 defineSymbol(math, main, bin, "\u00f7", "\\div", true);
 defineSymbol(math, main, bin, "\u00b1", "\\pm", true);
 defineSymbol(math, main, bin, "\u00d7", "\\times", true);
 defineSymbol(math, main, bin, "\u2229", "\\cap", true);
 defineSymbol(math, main, bin, "\u222a", "\\cup", true);
-defineSymbol(math, main, bin, "\u2216", "\\setminus");
+defineSymbol(math, main, bin, "\u2216", "\\setminus", true);
 defineSymbol(math, main, bin, "\u2227", "\\land");
 defineSymbol(math, main, bin, "\u2228", "\\lor");
 defineSymbol(math, main, bin, "\u2227", "\\wedge", true);
@@ -11191,7 +11191,7 @@ function mathmlBuilder$5(group, options) {
   var inner = buildExpression(group.body, options);
 
   if (group.mclass === "minner") {
-    return mathMLTree.newDocumentFragment(inner);
+    node = new mathMLTree.MathNode("mpadded", inner);
   } else if (group.mclass === "mord") {
     if (group.isCharacterBox) {
       node = inner[0];
@@ -11219,6 +11219,10 @@ function mathmlBuilder$5(group, options) {
     } else if (group.mclass === "mopen" || group.mclass === "mclose") {
       node.attributes.lspace = "0em";
       node.attributes.rspace = "0em";
+    } else if (group.mclass === "minner") {
+      node.attributes.lspace = "0.0556em"; // 1 mu is the most likely option
+
+      node.attributes.width = "+0.1111em";
     } // MathML <mo> default space is 5/18 em, so <mrel> needs no action.
     // Ref: https://developer.mozilla.org/en-US/docs/Web/MathML/Element/mo
 
@@ -17955,7 +17959,7 @@ var katex = {
   /**
    * Current KaTeX version
    */
-  version: "0.15.1",
+  version: "0.15.3",
 
   /**
    * Renders the given LaTeX into an HTML+MathML combination, and adds
