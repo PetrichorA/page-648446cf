@@ -4,10 +4,10 @@
 */
 
 ((document) => {
-    document.addEventListener('DOMContentLoaded', () => {
+    const insert = () => {
         // insert KaTeX (https://github.com/KaTeX/KaTeX)
         let elem = document.createElement('script');
-        elem.src = document.getElementById('katex-url').href;
+        elem.src = document.querySelector('#katex-url').href;
         elem.addEventListener('load', () => {
             document.body.querySelectorAll('span.math.inline').forEach((elem) => {
                 katex.render(elem.textContent, elem, {
@@ -26,8 +26,14 @@
 
         // insert highlight.js (https://github.com/highlightjs/highlight.js)
         elem = document.createElement('script');
-        elem.src = document.getElementById('hljs-url').href;
+        elem.src = document.querySelector('#hljs-url').href;
         elem.addEventListener('load', () => hljs.highlightAll());
         document.body.appendChild(elem);
-    });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', insert);
+    } else {
+        insert()
+    }
 })(document);
