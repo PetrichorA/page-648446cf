@@ -4,12 +4,14 @@ from uuid import uuid4
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-subprocess.run(args=('wsl', 'git', 'add', '--all'))
-subprocess.run(args=('wsl', 'git', 'commit', '-m', str(uuid4())))
-subprocess.run(args=('wsl', 'git', 'push'))
-subprocess.run(args=('wsl', 'git', 'gc'))
+gfw = subprocess.check_output(
+    args=('python', '-u', r'C:\Users\joefa\Desktop\WorkSpace\git.py')).decode().strip()
 
-commit_hash = subprocess.run(
-    args=('wsl', 'git', 'rev-parse', 'HEAD'),
-    capture_output=True).stdout.decode().strip()
+subprocess.run(args=(gfw, 'add', '--all'))
+subprocess.run(args=(gfw, 'commit', '-m', str(uuid4())))
+subprocess.run(args=(gfw, 'push'))
+subprocess.run(args=(gfw, 'gc'))
+
+commit_hash = subprocess.check_output(
+    args=(gfw, 'rev-parse', 'HEAD')).decode().strip()
 input('https://cdn.jsdelivr.net/gh/PetrichorA/page-648446cf@{}/'.format(commit_hash))
