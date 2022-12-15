@@ -1,1 +1,39 @@
-(e=>{const t=()=>{let t=e.createElement("script");t.src=e.querySelector("#katex-url").href,t.addEventListener("load",(()=>{e.body.querySelectorAll("span.math.inline").forEach((e=>{katex.render(e.textContent,e,{displayMode:!1,throwOnError:!1})})),e.body.querySelectorAll("div.math.block").forEach((e=>{katex.render(e.textContent,e,{displayMode:!0,throwOnError:!1})}))})),e.body.appendChild(t),t=e.createElement("script"),t.src=e.querySelector("#hljs-url").href,t.addEventListener("load",(()=>hljs.highlightAll())),e.body.appendChild(t)};"loading"===e.readyState?e.addEventListener("DOMContentLoaded",t):t()})(document);
+/*
+    <link rel="preload" as="script" id="katex-url" href="katex-path">
+    <link rel="preload" as="script" id="hljs-url" href="hljs-path">
+*/
+
+((document) => {
+    const insert = () => {
+        // insert KaTeX (https://github.com/KaTeX/KaTeX)
+        let elem = document.createElement('script');
+        elem.src = document.querySelector('#katex-url').href;
+        elem.addEventListener('load', () => {
+            document.body.querySelectorAll('span.math.inline').forEach((elem) => {
+                katex.render(elem.textContent, elem, {
+                    displayMode: false,
+                    throwOnError: false
+                });
+            });
+            document.body.querySelectorAll('div.math.block').forEach((elem) => {
+                katex.render(elem.textContent, elem, {
+                    displayMode: true,
+                    throwOnError: false
+                });
+            });
+        });
+        document.body.appendChild(elem);
+
+        // insert highlight.js (https://github.com/highlightjs/highlight.js)
+        elem = document.createElement('script');
+        elem.src = document.querySelector('#hljs-url').href;
+        elem.addEventListener('load', () => hljs.highlightAll());
+        document.body.appendChild(elem);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', insert);
+    } else {
+        insert()
+    }
+})(document);
