@@ -4,14 +4,13 @@ from uuid import uuid4
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-gfw = subprocess.check_output(
-    args=('python', '-u', r'C:\Users\joefa\Desktop\WorkSpace\git.py')).decode().strip()
+git = 'C:/ArkData/misc/git.exe'
 
-subprocess.run(args=(gfw, 'add', '--all'))
-subprocess.run(args=(gfw, 'commit', '-m', str(uuid4())))
-subprocess.run(args=(gfw, 'push'))
-subprocess.run(args=(gfw, 'gc'))
+subprocess.run(args=(git, 'add', '--all'))
+subprocess.run(args=(git, 'commit', '-m', str(uuid4())))
+subprocess.run(args=(git, 'push'))
+subprocess.run(args=(git, 'gc'))
 
 commit_hash = subprocess.check_output(
-    args=(gfw, 'rev-parse', 'HEAD')).decode().strip()
+    args=(git, 'rev-parse', 'HEAD')).decode().strip()
 input('https://cdn.jsdelivr.net/gh/PetrichorA/page-648446cf@{}/'.format(commit_hash))
