@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+      <key>PayloadContent</key>
+      <array>
+        <dict>
+          <key>DNSSettings</key>
+          <dict>
+            <key>DNSProtocol</key>
+            <string>TLS</string>
+            <key>ServerAddresses</key>
+            <array>
+              <string>2606:4700:5c::a29f:2e07</string>
+<string>2606:4700:54::a29f:2407</string>
+<string>162.159.36.5</string>
+<string>162.159.36.20</string>
+
+            </array>
+            <key>ServerName</key>
+            <string>datg2a6zmw.cloudflare-gateway.com</string>
+          </dict>
+          <key>PayloadDescription</key>
+          <string>Configures device to use ArkDevice Encrypted DNS over TLS</string>
+          <key>PayloadDisplayName</key>
+          <string>ArkDevice DNS over TLS</string>
+          <key>PayloadIdentifier</key>
+          <string>com.apple.dnsSettings.managed.4cd11a6f-9e09-4751-bda2-8a5c60f64f13</string>
+          <key>PayloadType</key>
+          <string>com.apple.dnsSettings.managed</string>
+          <key>PayloadUUID</key>
+          <string>a3006a3d-01b4-4cf4-ad8d-dc3cd6cfec44</string>
+          <key>PayloadVersion</key>
+          <integer>1</integer>
+          <key>ProhibitDisablement</key>
+          <false/>
+        </dict>
+      </array>
+      <key>PayloadDescription</key>
+      <string>Adds the ArkDevice DNS to Big Sur and iOS 14 based systems</string>
+      <key>PayloadDisplayName</key>
+      <string>ArkDevice DNS over TLS</string>
+      <key>PayloadIdentifier</key>
+      <string>plus.simpledns.apple-dns</string>
+      <key>PayloadRemovalDisallowed</key>
+      <false/>
+      <key>PayloadType</key>
+      <string>Configuration</string>
+      <key>PayloadUUID</key>
+      <string>2744fea8-deb7-4ddc-9b9a-9a81873c0411</string>
+      <key>PayloadVersion</key>
+      <integer>1</integer>
+</dict>
+</plist>
